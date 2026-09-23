@@ -41,13 +41,12 @@ public class PersonalProfileActivity extends AppCompatActivity {
         );
 
         /*
-        Procura na tela um componente cujo ID seja editTextName e guarda
-        uma referência a ele na variável editTextName.
+        Procura na tela um componente através do seu id e tipo
          */
         EditText editTextName = findViewById(R.id.editTextName);
         EditText editTextPhone = findViewById(R.id.editTextPhone);
         EditText editTextEmail = findViewById(R.id.editTextEmail);
-        RadioGroup rgGenero = findViewById(R.id.rgGenero);
+        RadioGroup rgGender = findViewById(R.id.rgGender);
         CheckBox checkBox1 = findViewById(R.id.CheckBoxProfile1);
         CheckBox checkBox2 = findViewById(R.id.CheckBoxProfile2);
         CheckBox checkBox3 = findViewById(R.id.CheckBoxProfile3);
@@ -55,12 +54,12 @@ public class PersonalProfileActivity extends AppCompatActivity {
 
         /*
         Recupera os valores armazenados no SharedPreferences
-        e coloca cada um em uma variável String.
+        e coloca cada um em uma variável e define valores default.
         */
-        String name = sharedPreferences.getString("nome", "admin");
+        String name = sharedPreferences.getString("name", "admin");
         String email = sharedPreferences.getString("email", "");
-        String phone = sharedPreferences.getString("telefone", "");
-        int genero = sharedPreferences.getInt("genero", R.id.radioMan);
+        String phone = sharedPreferences.getString("phone", "");
+        int gender = sharedPreferences.getInt("gender", R.id.radioMan);
         boolean check1 = sharedPreferences.getBoolean("check1", false);
         boolean check2 = sharedPreferences.getBoolean("check2", false);
         boolean check3 = sharedPreferences.getBoolean("check3", false);
@@ -77,10 +76,11 @@ public class PersonalProfileActivity extends AppCompatActivity {
         checkBox3.setChecked(check3);
 
         /*
-        para comentar
+        Verifica se existe um gênero salvo no SharedPreferences.
+        Caso exista, seleciona o RadioButton correspondente ao ID salvo.
          */
-        if (genero != -1) {
-            rgGenero.check(genero);
+        if (gender != -1) {
+            rgGender.check(gender);
         }
 
         // instancia do botão salvar
@@ -105,7 +105,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
             String newName = editTextName.getText().toString();
             String newEmail = editTextEmail.getText().toString();
             String newPhone = editTextPhone.getText().toString();
-            int selectedId = rgGenero.getCheckedRadioButtonId();
+            int selectedId = rgGender.getCheckedRadioButtonId();
 
             /*
             Armazena os novos valores no Editor,
@@ -114,7 +114,7 @@ public class PersonalProfileActivity extends AppCompatActivity {
             editor.putString("nome", newName);
             editor.putString("email", newEmail);
             editor.putString("telefone", newPhone);
-            editor.putInt("genero", selectedId);
+            editor.putInt("gender", selectedId);
             editor.putBoolean("check1", checkBox1.isChecked());
             editor.putBoolean("check2", checkBox2.isChecked());
             editor.putBoolean("check3", checkBox3.isChecked());
@@ -132,7 +132,7 @@ instancia button CancelarPofile
         Button btnCancelarProfile = findViewById(R.id.btnCancelarProfile);
 
 /*
-
+listener do botão cancelar que finaliza aquele processo
  */
         btnCancelarProfile.setOnClickListener(v -> {
             finish();
