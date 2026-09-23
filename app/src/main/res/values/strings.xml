@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MyFirstAppMob</string>
+    <string name="Entrar">Enter</string>
+    <string name="Sair">exit</string>
+    <string name="Profile">Profile</string>
+    <string name="hintName">Name</string>
+    <string name="hintPhone">Phone</string>
+    <string name="hintEmail">Email</string>
+    <string name="radioWoman">Woman</string>
+    <string name="radioMan">Man</string>
+    <string name="titleProfile">My Profile</string>
+    <string name="btnSalvar">Save</string>
+    <string name="btnCancelarProfile">Cancel</string>
+    <string name="CheckBoxProfile1">Hipolípidia</string>
+    <string name="CheckBoxProfile2">Hipoglicídica</string>
+    <string name="CheckBoxProfile3">Sem Glúten</string>
+</resources>
+
